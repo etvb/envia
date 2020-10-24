@@ -85,10 +85,7 @@ export default {
     },
     agregarProducto(){
       this.productos.push(this.form);
-      this.form.sku = '',
-      this.form.nombre = '',
-      this.form.cantidad = '',
-      this.form.precio = ''
+      
       // if(this.form.sku !== '' || this.form.sku !== '' || this.form.cantidad !== '' || this.form.precio !== ''){
 
       //   this.productos.push(this.form);
