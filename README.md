@@ -1,5 +1,10 @@
 # envia
 
+
+### Creado con 
+vue-cli
+vue router
+
 ## Project setup
 ```
 npm install
