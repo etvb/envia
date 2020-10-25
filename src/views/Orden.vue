@@ -2,17 +2,16 @@
   <div>
     
     <h1>Productos de la Orden de Compra {{$route.query.numero}}</h1>
-    
 
     <b-table striped hover :items="productos"></b-table>
 
-    <b-form @submit.prevent="agregarProducto" inline  class="ml-5">
+    <b-form  @submit.prevent="agregarProducto" inline  class="ml-5">
     <label class="sr-only2" for="inline-form-input-name">SKU:</label>
     <b-input
       id="inline-form-input-name"
       class="mb-2 mr-sm-2 mb-sm-0"
       placeholder="SKU"
-      v-model="form.sku"
+      v-model="sku"
       required
       pattern="[0-9]*"
       title="SOLO NUMEROS"
@@ -22,7 +21,7 @@
     <b-input
       id="inline-form-input-name"
       class="mb-2 mr-sm-2 mb-sm-0"
-      v-model="form.nombre"
+      v-model="nombre"
       required
       
       
@@ -31,7 +30,7 @@
     <b-input
       id="inline-form-input-name"
       class="mb-2 mr-sm-2 mb-sm-0"
-      v-model="form.cantidad"
+      v-model="cantidad"
       required
       pattern="[0-9]*"
       title="SOLO NUMEROS"
@@ -41,7 +40,7 @@
     <b-input
       id="inline-form-input-name"
       class="mb-2 mr-sm-2 mb-sm-0"
-      v-model="form.precio"
+      v-model="precio"
       required
       pattern="[0-9]*"
       title="SOLO NUMEROS"
@@ -56,20 +55,23 @@
 
 <script>
 export default {
-  // props:[usk, nombre],
   created() {
     this.datosProducto();
   },
   data() {
     return {
-      // producto: this.$route.query.productos,
       productos: [],
-      form: {
-        sku: '',
-        nombre: '',
-        cantidad: '',
-        precio: ''
-      }
+      prueba: '',
+      sku: '',
+      nombre: '',
+      cantidad: '',
+      precio: ''
+      // form: {
+      //   sku: '',
+      //   nombre: '',
+      //   cantidad: '',
+      //   precio: ''
+      // },
     }
   },
   methods: {
@@ -84,14 +86,18 @@ export default {
       });
     },
     agregarProducto(){
-      this.productos.push(this.form);
-      
-      // if(this.form.sku !== '' || this.form.sku !== '' || this.form.cantidad !== '' || this.form.precio !== ''){
+      this.productos.push({
+        sku: this.sku,
+        nombre: this.nombre,
+        cantidad: this.quantity,
+        precio: this.precio
+      });
+      this.sku = '';
+      this.nombre = '';
+      this.cantidad = '';
+      this.precio = '';
 
-      //   this.productos.push(this.form);
-      // }else{
-      //   alert('llenar todos los cmpos');
-      // }
+  
     }
   },
 }
